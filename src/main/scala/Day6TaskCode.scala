@@ -84,6 +84,8 @@ object Day6TaskCode extends App {
   println(qascala.pages)
   println(s"The book named ${qascala.title} by ${qascala.author} at ${qascala.library} is available: ${qascala.available}")
 
+  //Can make a class for its own individual for class safety/sensitivity such as class Title(title:string) and use this in place for class parameter.
+
   //Extension 1
   println("Extension 1:")
   val ex1Lower: String = "cheese"
@@ -109,12 +111,12 @@ object Day6TaskCode extends App {
 
   //Extension 4
   //This cannot be simply done, it would be better to create a new value with the Int type, as there is not a built in
-  // function for this. However this could be done using extra values and an if statement.
+  // function for this. However, this could be done using extra values and an if statement.
 
 
   //Extension 5
   //This cannot be simply done, it would be better to create a new value with the String type, as there is not a built in
-  // function for this. However this could also be done using extra values and if statement.
+  // function for this. However, this could also be done using extra values and if statement.
 
   //Extension 6
   println("Extension 6:")
@@ -135,7 +137,7 @@ object Day6TaskCode extends App {
   //Research 2
   //We would need to give it a clear valid name for the variable in order for it to compile.
   //We are unable to use any keywords or reserved words, such as abstract, case, class, def.
-
+  //Can use backticks to work around the issue of cannot avoid it.
 
   //Research 3
   //A case class has all constructor parameters are public by default as opposed to class which has them private by default.
