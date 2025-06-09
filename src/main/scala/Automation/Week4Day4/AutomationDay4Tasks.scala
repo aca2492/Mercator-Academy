@@ -88,7 +88,7 @@ object AutomationDay4Tasks extends App {
 
   println("MVP 2b:")
   demoDriver.navigate().to("https://demoqa.com/text-box")
-
+  
 
 
 
