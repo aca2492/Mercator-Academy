@@ -1,3 +1,5 @@
+package ScalaAfternoonTasks
+
 object Day7Task extends App {
 
   //MVP 1

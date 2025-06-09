@@ -1,4 +1,4 @@
-import javax.swing.InputMap
+package ScalaCodeAlong
 
 object TueCollectionCodeAlong extends App{
 

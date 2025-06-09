@@ -1,4 +1,4 @@
-import WedOptionsCodeAlong.age
+package ScalaCodeAlong
 
 object WedOptionsCodeAlong extends App{
 
