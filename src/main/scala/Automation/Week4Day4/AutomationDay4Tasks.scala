@@ -47,6 +47,7 @@ object AutomationDay4Tasks extends App {
 
 
   formDriver.close()
+  formDriver.quit()
 
 
   //HTML MVP
@@ -55,16 +56,16 @@ object AutomationDay4Tasks extends App {
   w3driver.get("https://www.w3schools.com/html/html_examples.asp")
 
   println("MVP 1a:")
-  val buttonElements: util.List[WebElement] = w3driver.findElements(By.className("w3-button"))
+  val buttonElements = w3driver.findElements(By.className("w3-button"))
   println(s"There is a total of " + buttonElements.size() + " button elements")
 
   println("MVP 1b:")
-  val imgElements: util.List[WebElement] = w3driver.findElements(By.tagName("img"))
+  val imgElements = w3driver.findElements(By.tagName("img"))
   println(s"There is a total of " + imgElements.size() + " image elements")
 
   println("MVP 1c:")
-  val elementCounta: util.List[WebElement] = w3driver.findElements(By.tagName("a"))
-  val elementCounth1: util.List[WebElement] = w3driver.findElements(By.tagName("h1"))
+  val elementCounta = w3driver.findElements(By.tagName("a"))
+  val elementCounth1 = w3driver.findElements(By.tagName("h1"))
   val aCount: Int = elementCounta.size()
   val hCount: Int = elementCounth1.size()
   println(s"There is $aCount <a> tags on this page")
@@ -72,9 +73,16 @@ object AutomationDay4Tasks extends App {
 
   println("MVP 1d:")
 
+
   println("MVP 1e:")
+  val hyperLinkCount = w3driver.findElements(By.cssSelector("[href]"))
+//  for(){
+//      count = count + 1
+//  }
+  println(s"There is $hyperLinkCount.size() hyperlinks on this page")
 
   w3driver.close()
+  w3driver.quit()
 
   println("HTML MVP 2")
   val demoDriver: WebDriver = new ChromeDriver()
@@ -94,5 +102,6 @@ object AutomationDay4Tasks extends App {
 
 
  demoDriver.close()
+  demoDriver.quit()
 
 }
