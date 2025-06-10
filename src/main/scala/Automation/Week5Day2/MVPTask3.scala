@@ -1,12 +1,14 @@
 package Automation.Week5Day2
 
-import org.openqa.selenium.{By, WebDriver, WebElement}
+import org.openqa.selenium.{By, Point, WebDriver, WebElement}
 import org.openqa.selenium.chrome.ChromeDriver
 
 object MVPTask3 extends App {
 
   val driver: WebDriver = new ChromeDriver()
   driver.get("https://demoqa.com/automation-practice-form")
+
+  driver.manage().window().maximize()
 
   val firstName: WebElement = driver.findElement(By.xpath("//input[@id='firstName']"))
   if (firstName.isDisplayed && firstName.isEnabled){
@@ -27,7 +29,8 @@ object MVPTask3 extends App {
   val submitButton: WebElement = driver.findElement(By.xpath("//button[@type='submit']"))
   if(submitButton.isDisplayed && submitButton.isEnabled) {
     println("Submit Button is displayed and enabled - Passed")
-    submitButton.submit()
+    //submitButton.submit()
+    submitButton.click()
   }else{
     println("Submit Button is not displayed or enabled")
   }
