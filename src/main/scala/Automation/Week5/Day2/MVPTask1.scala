@@ -1,4 +1,4 @@
-package Automation.Week5Day2
+package Automation.Week5.Day2
 
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver

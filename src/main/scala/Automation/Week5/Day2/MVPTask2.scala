@@ -1,4 +1,4 @@
-package Automation.Week5Day2
+package Automation.Week5.Day2
 
 import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.openqa.selenium.chrome.ChromeDriver
@@ -29,9 +29,9 @@ object MVPTask2 extends App {
   //Partial Page Source
   println("Part Source")
   println(driver.getPageSource.take(250))
-  val sourceList: Seq[String] = driver.getPageSource.split("}")
-  println("Part Source 2")
-  println(sourceList(0))
+//  val sourceList: Seq[String] = driver.getPageSource.split("}")
+//  println("Part Source 2")
+//  println(sourceList(0))
 
   driver.quit()
 
