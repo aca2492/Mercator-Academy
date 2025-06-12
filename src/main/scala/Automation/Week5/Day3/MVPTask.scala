@@ -75,8 +75,6 @@ object MVPTask extends App {
   println("Frame Title: " + text1.getText)
   val text2 = driver.findElement(By.xpath("/html/body/p"))
   println("Frame Text: " + text2.getText)
-//  val text3 = driver.findElement(By.tagName("/html/body/h1"))
-//  println("Frame Text within Box: " + text3.getText)
 
   driver.navigate().to("https://www.tutorialspoint.com/selenium/practice/nestedframes.php")
 
