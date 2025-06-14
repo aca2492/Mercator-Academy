@@ -5,7 +5,8 @@ import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait, WebDriver
 import org.openqa.selenium.{By, JavascriptExecutor, WebDriver, WebElement}
 
 import java.time.Duration
-import scala.collection.convert.ImplicitConversions.`collection AsScalaIterable`
+import scala.collection.convert.ImplicitConversions.{`collection AsScalaIterable`, `collection asJava`}
+import scala.jdk.CollectionConverters.CollectionHasAsScala
 
 object Wk5D4Tasks extends App {
 
@@ -74,12 +75,21 @@ object Wk5D4Tasks extends App {
   println(s"Webpage Title: $title\n")
 
   //Extension - Fluent Wait
-  val fluentWait = new FluentWait[WebDriver](driver).withTimeout(Duration.ofSeconds(15)).pollingEvery(Duration.ofMillis(500))
+  val fluentWait = new FluentWait[WebDriver](driver)
+    .withTimeout(Duration.ofSeconds(15))
+    .pollingEvery(Duration.ofMillis(500))
   val gambia = fluentWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"countries\"]/tbody/tr[64]")))
+  val gambiaText = gambia.findElements(By.tagName("td"))
 
   println("Gambia has become Visible: " + gambia.getText)
 
   //Extension Table Validation
+  val frenchLanguage = rows.exists{ row =>
+    val cells: Iterable[WebElement] = row.findElements(By.tagName("td")).asScala
+    cells.exists(_.getText == "French")
+  }
+  assert(frenchLanguage)
+
   for(i <- 1  until  rows.size()){
     val countryName = rows.get(i).findElements(By.tagName("td"))
 
