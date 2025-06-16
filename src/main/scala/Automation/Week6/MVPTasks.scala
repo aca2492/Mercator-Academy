@@ -3,7 +3,7 @@ package Automation.Week6
 import Automation.Week6.ScreenCapture.driver
 import org.openqa.selenium.chrome.{ChromeDriver, ChromeOptions}
 import org.openqa.selenium.io.FileHandler
-import org.openqa.selenium.{By, NoSuchElementException, OutputType, TakesScreenshot, TimeoutException, WebDriver, WebElement}
+import org.openqa.selenium.{By, NoSuchElementException, OutputType, StaleElementReferenceException, TakesScreenshot, TimeoutException, WebDriver, WebElement}
 
 import java.io.File
 import java.text.SimpleDateFormat
@@ -17,17 +17,17 @@ object MVPTasks extends App {
   val driver: WebDriver = new ChromeDriver(options)
 
   def takeScreenCapture(driver: WebDriver): Unit  = {
-    if(driver.getCurrentUrl == "https://the-internet.herokuapp.com/secure"){
+    if(driver.findElement(By.tagName("h2")).getText == "Secure Area"){
       val timeStamp = new SimpleDateFormat("HHmmss").format(new Date())
       val dateStamp = new SimpleDateFormat("yyyy-MM-dd").format(new Date())
       val srcTimestamp: File = driver.asInstanceOf[TakesScreenshot].getScreenshotAs(OutputType.FILE)
-      FileHandler.copy(srcTimestamp, new File(s"/Users/adam.chery/Documents/screenshots/${dateStamp}-success-$timeStamp.png"))
+      FileHandler.copy(srcTimestamp, new File(s"/Users/adam.chery/Documents/screenshots/tasks/mvp/${dateStamp}-success-$timeStamp.png"))
       println("Success")
-    }else{
+    }else if (driver.findElement(By.tagName("h2")).getText == "Login Page"){
       val timeStamp = new SimpleDateFormat("HHmmss").format(new Date())
       val dateStamp = new SimpleDateFormat("yyyy-MM-dd").format(new Date())
       val srcTimestamp: File = driver.asInstanceOf[TakesScreenshot].getScreenshotAs(OutputType.FILE)
-      FileHandler.copy(srcTimestamp, new File(s"/Users/adam.chery/Documents/screenshots/${dateStamp}-failure-$timeStamp.png"))
+      FileHandler.copy(srcTimestamp, new File(s"/Users/adam.chery/Documents/screenshots/tasks/mvp/${dateStamp}-failure-$timeStamp.png"))
       println("Failure")
     }
   }
@@ -48,9 +48,14 @@ object MVPTasks extends App {
   }catch {
     case e: NoSuchElementException =>
       println("No Element Found")
+      takeScreenCapture(driver)
 
     case e: TimeoutException =>
       println("Page Timeout")
+
+    case e: StaleElementReferenceException =>
+      println("Broken")
+      takeScreenCapture(driver)
   }finally {
     if(driver != null){
       driver.quit()
