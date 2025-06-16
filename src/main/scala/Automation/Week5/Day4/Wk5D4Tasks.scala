@@ -21,7 +21,7 @@ object Wk5D4Tasks extends App {
   val js = driver.asInstanceOf[JavascriptExecutor]
 
   val countryTable = driver.findElement(By.id("countries"))
-//
+
 //  //Print All Country Names
   val rows = countryTable.findElements(By.tagName("tr"))
   for(i <- 1  until  rows.size()){
@@ -31,8 +31,6 @@ object Wk5D4Tasks extends App {
     js.executeScript("arguments[0].style.backgroundColor ='red'", rows.get(i))
     println(s"Country ${i + 1}: $countries")
   }
-
-
 
   println("\n")
   //Explicit Wait, Print Capital and Currency
