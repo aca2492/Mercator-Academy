@@ -10,7 +10,7 @@ import java.io.File
 object ExtensionTasks extends App {
 
   val options = new ChromeOptions
-  //options.addArguments("--headless=new")
+  options.addArguments("--headless=new")
 
   val driver: WebDriver = new ChromeDriver(options)
   driver.get("https://the-internet.herokuapp.com/tables")

@@ -17,16 +17,13 @@ object MVPTasks extends App {
   val driver: WebDriver = new ChromeDriver(options)
 
   def takeScreenCapture(driver: WebDriver): Unit  = {
+    val timeStamp = new SimpleDateFormat("HHmmss").format(new Date())
+    val dateStamp = new SimpleDateFormat("yyyy-MM-dd").format(new Date())
+    val srcTimestamp: File = driver.asInstanceOf[TakesScreenshot].getScreenshotAs(OutputType.FILE)
     if(driver.findElement(By.tagName("h2")).getText == "Secure Area"){
-      val timeStamp = new SimpleDateFormat("HHmmss").format(new Date())
-      val dateStamp = new SimpleDateFormat("yyyy-MM-dd").format(new Date())
-      val srcTimestamp: File = driver.asInstanceOf[TakesScreenshot].getScreenshotAs(OutputType.FILE)
       FileHandler.copy(srcTimestamp, new File(s"/Users/adam.chery/Documents/screenshots/tasks/mvp/${dateStamp}-success-$timeStamp.png"))
       println("Success")
     }else if (driver.findElement(By.tagName("h2")).getText == "Login Page"){
-      val timeStamp = new SimpleDateFormat("HHmmss").format(new Date())
-      val dateStamp = new SimpleDateFormat("yyyy-MM-dd").format(new Date())
-      val srcTimestamp: File = driver.asInstanceOf[TakesScreenshot].getScreenshotAs(OutputType.FILE)
       FileHandler.copy(srcTimestamp, new File(s"/Users/adam.chery/Documents/screenshots/tasks/mvp/${dateStamp}-failure-$timeStamp.png"))
       println("Failure")
     }
@@ -52,6 +49,7 @@ object MVPTasks extends App {
 
     case e: TimeoutException =>
       println("Page Timeout")
+      takeScreenCapture(driver)
 
     case e: StaleElementReferenceException =>
       println("Broken")
