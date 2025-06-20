@@ -1,4 +1,4 @@
-package ScalaAfternoonTasks
+package Scala.AfternoonTasks
 
 object Day7Task extends App {
 

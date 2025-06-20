@@ -1,4 +1,4 @@
-package ScalaCodeAlong
+package Scala.CodeAlong
 
 object HelloWorld {
 
