@@ -1,4 +1,4 @@
-package ScalaCodeAlong
+package Scala.CodeAlong
 
 object MonCodeAlong extends App {
 // VAL = BEST PRACTICE
