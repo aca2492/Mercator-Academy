@@ -102,10 +102,24 @@ object MVPTask extends App {
   //N=Switch to Frame 1
   driver.switchTo().frame("frame1")
 
-
-
-
-
   driver.quit()
+
+  //Research
+  // Research 1.
+  //  File Upload and Download are handled differently than expected. File upload utilises the sendKeys() function
+  // with the file path of what you are uploading to be input as the send keys. File download utilises the click() function
+  // and allows you to change to the filepath of the downloaded content or the need to 'open' the content to interact with it.
+
+  //Research 2.
+  //Scrolling on a page can be handled by utilising a Javascript Executor, this can be done to scroll to specific elements
+  // or can be utilised to scroll to specific coordinates
+
+  //Research 3.
+  // A dynamic dropdown is a dropdown where it can only be used based on the selection of a different option, and the options
+  // available to you will differ based on the original selections made.
+
+  //Research 4.
+  //The Shadow DOM is an encapsulated DOM tree hidden inside an element that allows you to access this tree with easy-to-use
+  // shadow root methods
 
 }
