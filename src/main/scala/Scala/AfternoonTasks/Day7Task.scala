@@ -68,9 +68,19 @@ object Day7Task extends App {
 
   //MVP 9d
   println("MVP 9d:")
-  val key = newFailedAttempts.keys.toSeq(1)
+  val pos1key = newFailedAttempts.keys.toSeq(1)
+  val pos1value = newFailedAttempts.values.toSeq(1)
+  println(s"User: $pos1key with $pos1value attempts")
+  val updatedFailedAttempts = newFailedAttempts.updatedWith(pos1key)(_.map(_ + 1))
+  println(s"Updated user: ${updatedFailedAttempts.keys.toSeq(1)} to ${updatedFailedAttempts.values.toSeq(1)} attempts")
 
-
+  //MVP 9e
+  println("MVP 9e:")
+  val pos5Key = updatedFailedAttempts.keys.toSeq(5)
+  println(s"User: $pos5Key is at index 5")
+  val finalFailedAttempts = updatedFailedAttempts.removed(pos5Key)
+  println("Simon Removed")
+  println(finalFailedAttempts)
 
   //Extension 1a
   println("Extension 1a")
@@ -92,8 +102,30 @@ object Day7Task extends App {
   println("Extension 1c")
   val allSubmitters = dayOne ++ dayTwo
   println("All unique submitters: " + allSubmitters)
-  //val allSubmittersAlt
 
 
+  //Research
+  //Research 1.
+  //Knowing the difference between Seq and Set can help when it comes to testing due to the main
+  //differences between the types, Seq is sequential, however also allows duplicates, Set however
+  // is not sequential, but only has 1 instance of each. Knowing this in itself allows to cater tests
+
+  //Research 2a.
+  //map.get(Key) - The value associated with key k in map ms as an option, None if not found.
+  //map(Key) - The value associated with key k in map ms, or exception if not found.
+  //map.getOrElse(k, d) - The value associated with key k in map ms, or the default value d if not found.
+
+  //Research 2b
+  println("Research 2b" )
+  val mGet = failedAttempts.get("Alan")
+  println(s"Map.get: $mGet")
+  val mKey = failedAttempts("Alan")
+  println(s"Map(Key): $mKey")
+  val mGetElse = failedAttempts("Alan")
+  println(s"Map.getOrElse: $mGetElse")
+
+  //Reserach 2c
+  //There is the risk of NoSuchElementException, which can cause some issues when testing, if there is not a catch in
+  // place for the exception.
 
 }
